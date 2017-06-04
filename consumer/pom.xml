@@ -7,6 +7,8 @@
     <groupId>com.cutepet</groupId>
     <artifactId>consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>pact</name>
+    <description>Pact contract test for the pet store demo</description>
 
     <dependencies>
         <dependency>

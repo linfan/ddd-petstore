@@ -1,3 +1,9 @@
+## DEPRECATED
+
+### Moving to [Microservices Kata](https://github.com/microservices-kata).
+
+----------
+
 # Pet Store for DDD Workshop
 
 ### 练习步骤

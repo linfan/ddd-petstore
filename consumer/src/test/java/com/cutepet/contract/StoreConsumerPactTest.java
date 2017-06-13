@@ -7,6 +7,7 @@ import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.PactFragment;
 import com.google.common.collect.ImmutableMap;
+import io.restassured.RestAssured;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
 public class StoreConsumerPactTest {
     @Rule
-    public PactProviderRule mockProvider = new PactProviderRule("store_provider", "localhost", 8080, this);
+    public PactProviderRule mockProvider = new PactProviderRule("store_provider", "localhost", 8000, this);
 
     @Pact(consumer = "store_consumer")
     public PactFragment createFragment(PactDslWithProvider builder) {
@@ -69,6 +70,8 @@ public class StoreConsumerPactTest {
     @Test
     @PactVerification
     public void storeContractTest() {
+        RestAssured.port = 8000;
+
         get("/stores").then().body("data.name", hasItem("Doggy"));
 
         get("/stores/1/pets").then()
